@@ -7,6 +7,10 @@ $font-size: 30px;
 $font-family: Arial, sans-serif;
 $calendar-padding: 10px;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -37,9 +41,7 @@ body {
   color: $text-color;
   font-size: $font-size;
   cursor: pointer;
-  transition:
-    transform 0,
-    5s;
+  transition-duration: 0.5s;
 
   @for $i from 1 through 31 {
     &:nth-child(#{$i})::before {
@@ -54,13 +56,13 @@ body {
 }
 
 $week-days: (
-  sun: 0,
-  mon: calc(1 * #{$day-size} + 1 * #{$gap-size}),
-  tue: calc(2 * #{$day-size} + 2 * #{$gap-size}),
-  wed: calc(3 * #{$day-size} + 3 * #{$gap-size}),
-  thu: calc(4 * #{$day-size} + 4 * #{$gap-size}),
-  fri: calc(5 * #{$day-size} + 5 * #{$gap-size}),
-  sat: calc(6 * #{$day-size} + 6 * #{$gap-size}),
+  mon: calc(($day-size + $gap-size) * 0),
+  tue: calc(($day-size + $gap-size) * 1),
+  wed: calc(($day-size + $gap-size) * 2),
+  thu: calc(($day-size + $gap-size) * 3),
+  fri: calc(($day-size + $gap-size) * 4),
+  sat: calc(($day-size + $gap-size) * 5),
+  sun: calc(($day-size + $gap-size) * 6),
 );
 
 @each $day, $margin in $week-days {
